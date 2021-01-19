@@ -27,5 +27,27 @@ public class NoRegex {
     }
 
 
+    public boolean isValidID(String id){
+        id = id.toUpperCase().trim();
+        if(id.length() != 8){
+            return false;
+        }
+
+        if(id.charAt(0) < 65 || id.charAt(0) > 90){
+            return false;
+        }
+
+        if(id.charAt(1) < 65 || id.charAt(1) > 90){
+            return false;
+        }
+
+        for(int i = 2; i < id.length(); i++){
+            if(!Character.isDigit(id.charAt(i))){
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 }
