@@ -1,7 +1,7 @@
 package sk.kosickaakademia.regex;
 
 public class NoRegex {
-
+    
     public boolean isValidSPZ(String spz){
         if(spz == null){
             return false;
