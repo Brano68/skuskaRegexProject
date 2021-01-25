@@ -38,4 +38,21 @@ public class WithRegex {
         }
 
     }
+
+    public boolean checkValue(String text){
+        //ucitel
+        //Pattern p = Pattern.compile("^(([1-9][0-9]*|0)|(0[\\.,]|[1-9][0-9]*[\\.,])([1-9][0-9]|0[1-9]))$");
+        //ja
+        //Pattern p = Pattern.compile("^([1-9]{1,}[0-9]{0,}|0)|(0[\\.,])|([0-9][1-9])$");
+        Pattern p = Pattern.compile("^(0[\\.,])|([0-9][1-9])|([1-9]*[0-9]*)|([1-9]*[\\.,][0-9][1-9])$");
+        Matcher m = p.matcher(text);
+        boolean b = m.matches();
+
+        if(b){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }
