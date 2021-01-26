@@ -24,6 +24,9 @@ public class Main {
          */
         //readAndMakeResult();
         Jsonik.urobJson();
+        System.out.println("------");
+        Jsonik.readJsonFromFile();
+        Jsonik.readWeatherFromJsonFile();
     }
 
     public static void readAndMakeResult(){
