@@ -27,6 +27,7 @@ public class Main {
         System.out.println("------");
         Jsonik.readJsonFromFile();
         Jsonik.readWeatherFromJsonFile();
+        Jsonik.writeCities();
     }
 
     public static void readAndMakeResult(){

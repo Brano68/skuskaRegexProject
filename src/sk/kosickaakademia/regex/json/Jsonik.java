@@ -8,6 +8,7 @@ import org.json.simple.parser.ParseException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.sql.SQLOutput;
 import java.util.Iterator;
 
 public class Jsonik {
@@ -132,5 +133,48 @@ public class Jsonik {
         sunset = sunset - hodina*3600;
         minuta = (int)(sunset/60);
         System.out.println("Zapad: " + hodina + ":" + minuta);
+    }
+
+    public static void writeCities(){
+        System.out.println("-----------ULOHA------------");
+        JSONParser parser = new JSONParser();
+        try {
+            Reader reader = new FileReader("resource/mesta.json");
+            JSONObject jsonObject = (JSONObject)parser.parse(reader);
+
+            JSONObject metadata = (JSONObject) jsonObject.get("metadata");
+            Long count = (Long) metadata.get("totalCount");
+
+            System.out.println("Pocet miest je: " + count);
+
+            JSONArray jsonArray = (JSONArray) jsonObject.get("data");
+            //System.out.println(jsonArray);
+
+            for(int i = 0; i < count; i++){
+                int poradie = i + 1;
+                System.out.println("--" + poradie + ".--");
+                JSONObject js = (JSONObject) jsonArray.get(i);
+                //System.out.println(js);
+                String name = (String) js.get("name");
+                String region = (String) js.get("region");
+                String wikiDataId = (String) js.get("wikiDataId");
+                Double latitude = (Double) js.get("latitude");
+                Double longitude = (Double) js.get("longitude");
+
+                System.out.println("Nazov: " + name + " region: " + region +
+                        " wikiDatald: " + wikiDataId + " zemepisna sirka: " + latitude + "" +
+                        " zemepisna dlzka: " + longitude);
+                //System.out.println(jsonArray.get(i));
+
+            }
+
+
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        catch (ParseException e){
+            e.printStackTrace();
+        }
     }
 }
